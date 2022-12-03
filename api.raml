@@ -1,0 +1,101 @@
+#%RAML 1.0
+---
+title: mini-twitter
+version: v1
+
+/users:
+  /:
+    get:
+        description: Retrieve all the users
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  [
+                    {
+                      "id": "SbBGk",
+                      " name": "....",
+                    },{
+                      "id": "SbBGfez",
+                      " name": "....",
+                    }
+                  ]
+    post:
+      description: Create an user
+      response: 201
+      body:
+        application/json:
+          type: |
+            {
+              name: "...."
+            }
+
+  /{id}:
+    get:
+      description: Retrieve a specific user
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "id": "SbBGk",
+                  " name": "....",
+                }
+    /messages:
+      get:
+          description: Retrieve all the messages for a specific user
+          responses:
+            200:
+              body:
+                application/json:
+                  example: |
+                    [
+                      {
+                        "id": "SbBGk",
+                        "text": "....",
+                      },{
+                        "id": "SbBGfez",
+                        "text": "....",
+                      }
+                    ]
+/messages:
+  /:
+    get:
+        description: Retrieve all the messages
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  [
+                    {
+                      "id": "SbBGk",
+                      "text": "....",
+                    },{
+                      "id": "SbBGfez",
+                      "text": "....",
+                    }
+                  ]
+    post:
+      description: Create a message
+      response: 201
+      body:
+        application/json:
+          type: |
+            {
+              "text": "...."
+            }
+  /{id}:
+    get:
+      description: Retrieve a specific messages
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "id": "SbBGk",
+                  "text": "....",
+                }
