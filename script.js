@@ -31,6 +31,35 @@ const message_post = {
 const content = document.querySelector('#rightSide');
 // query selector the id rightSide
 
+const postsContainer = document.getElementById("posts");
+const api = "https://jsonplaceholder.typicode.com/posts";
+
+/* 
+Render post - This function takes an object with an id, userID, title 
+and body
+*/
+
+const renderPost = ({ id, userId, title, body }) => {
+  // Create div container
+  const postContent = document.createElement("div");
+  // Set id as attribute
+  postContent.setAttribute("id", id);
+  // Template
+  postContent.innerHTML = `
+                        <h5>${title}</h5>
+                        <p>${body}</p>
+                        <small>Author: ${userId}</small>
+                      `;
+  // Prepend to container
+  postsContainer.prepend(postContent);
+};
+
+fetch(api)
+  .then((res) => res.json())
+  .then((data) => data.forEach((post) => renderPost(post)))
+
+
+
 //pulls the user info based on users_get, their id, & their name
 function getUserInfo(users_get, id, name) {
     //returns the current user's information
