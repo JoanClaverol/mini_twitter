@@ -28,3 +28,5 @@ const message_post = {
 }
 
 
+const content = document.querySelector('#rightSide');
+// query selector the id rightSide
